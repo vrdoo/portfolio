@@ -1,0 +1,21 @@
+<div class="main">
+    <div class="mains">
+        <input type="search" placeholder="Search..." #text>
+        <button (click)="search(text.value)">Go</button>
+    </div>
+
+    <div class="medcine">
+        <div *ngFor="let e of posts$" class="question">
+            <a *ngIf="e.question.length > 30" [routerLink]="['/see',e.id]">
+                <span>{{e.question.substring(0.30)}}</span>
+                <span>....</span>
+            </a>
+
+            <a [routerLink]="['/see',e.id]" *ngIf="e.question.length <=30">{{e.question}}</a>
+            <div class="comment">
+                <h3>Comment count</h3>
+                <p>{{e.comment.length}}</p>
+            </div>
+        </div>
+    </div>
+</div>

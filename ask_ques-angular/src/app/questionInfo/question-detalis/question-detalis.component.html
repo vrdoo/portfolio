@@ -1,0 +1,37 @@
+<div class="mainMed">
+    <div class="oneMed" *ngIf="question">
+
+        <div class="titleDiv">
+            <h2>{{question.question}}</h2>
+            <p *ngIf="question.category ">Category-{{question.category.name}}</p>
+            <div class="add">
+                <p>{{question.likeq}}</p>
+                <button class="btn" (click)="likeques()">+</button>
+            </div>
+        </div>
+        <div class="commentDiv">
+            <h2>Comments</h2>
+            <div *ngFor="let e of question.comment" class="div">
+                <div class="comt">
+                    <h4>{{e.email}}</h4>
+                    <span>{{e.text}}</span>
+                </div>
+                <div class="addlike">
+                    <h3>{{e.rating}}</h3>
+                    <button class="btn" (click)="likecomm(e.id)">+</button>
+                </div>
+            </div>
+            <div class="likeCom">
+
+            </div>
+        </div>
+        <form class="addComm" [formGroup]="quesFrom" (ngSubmit)="addComment()">
+            <input type="text" placeholder="Email" formControlName="email" name="email">
+            <textarea cols="10" rows="10" placeholder="Write your commentary" formControlName="text"></textarea>
+            <button>Send</button>
+        </form>
+    </div>
+</div>
+<div *ngIf="myError">
+    <h2>{{myError}}</h2>
+</div>

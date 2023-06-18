@@ -1,0 +1,11 @@
+<div class="addQues">
+    <form [formGroup]="addForm" (ngSubmit)="addQuestion()">
+        <h2>Add Question</h2>
+        <input type="text" placeholder="Your question" formControlName="question"/>
+        <select *ngIf="categorys"  formControlName="categoryId">
+            <option value="" disabled>Choose category</option>
+            <option *ngFor="let e of categorys" value={{e.id}}>{{e.name}}</option>
+        </select>
+        <button>Send</button>
+    </form>
+</div>
